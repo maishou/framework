@@ -1,0 +1,76 @@
+// Variables
+$col: 12;
+$margin: 15px;
+$max-width: 1170px;
+$width: percentage(1 / $col);
+
+@mixin grid($breakpoint) {
+    %#{$breakpoint} {
+        position: relative;
+        padding: $margin;
+        flex: 0 1 auto;
+        align-self: auto;
+        align-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    @for $c from 1 through $col {
+        .col-#{$breakpoint}-#{$c} {
+            @extend %#{$breakpoint};
+            width: 100% / $col * $c;
+        }
+        .push-#{$breakpoint}-#{$c} {
+            left: 100% / $col * $c;
+        }
+        .pull-#{$breakpoint}-#{$c} {
+            left: 100% / $col * $c * -1;
+        }
+    }
+    @content;
+}
+
+@include break-lg {
+    @include grid('lg') {}
+}
+@include break-md {
+    @include grid('md') {}
+}
+@include break-sm {
+    @include grid('sm') {}
+}
+@include break-xs {
+    @include grid('xs') {}
+}
+
+
+.container {
+    margin: 0 auto;
+    max-width: 100%;
+    width: $max-width;
+}
+
+.row {
+    align-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+// Text align for quick mods
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}

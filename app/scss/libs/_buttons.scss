@@ -1,0 +1,142 @@
+@mixin padding($p) {
+    padding: $p $p*3;
+    @content;
+}
+
+@mixin btn($color, $bcolor) {
+    $btns: sm md lg;
+
+    %btn-#{$color} {
+        // margin: 7px 0;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        text-shadow: none;
+        color: $white;
+        text-decoration: none;
+        background-color: $bcolor;
+        @include trans;
+
+        &.line {
+            border: 1px solid $bcolor;
+            background-color: inherit;
+            color: $bcolor;
+        }
+
+        &.wide {
+            width: 100%;
+        }
+
+        &:hover, &:focus, &:active {
+            background: adjust-color($bcolor, $saturation: 0%, $lightness: -5%);
+            border-color: adjust-color($bcolor, $saturation: 0%, $lightness: -5%);
+            text-decoration: none;
+            @include trans;
+        }
+    }
+
+    @each $btn in $btns {
+        .btn-#{$btn}-#{$color} {
+            @extend %btn-#{$color};
+            @if $btn == sm {
+                @include padding(5px) {}
+            }
+            @if $btn == md {
+                @include padding(10px) {}
+            }
+            @if $btn == lg {
+                @include padding(15px) {}
+            }
+        }
+    }
+
+    // border: 1px solid $color;
+
+    // %btn {
+    //     background: $color;
+    // }
+    //
+    // %btn-sm {
+    //     @extend %btn;
+    //     padding: $padding;
+    // }
+    //
+    // %btn-lg {
+    //     @extend %btn;
+    //     padding: $padding * 2;
+    // }
+    //
+    // .btn-sm-#{$color} {
+    //     @extend %btn-sm;
+    //
+    // }
+
+
+
+
+
+
+}
+
+
+// @mixin btn($back, $line, $color, $bcolor) {
+//     margin: 7px 0;
+//     display: inline-block;
+//     vertical-align: middle;
+//     text-align: center;
+//     text-shadow: none;
+//     color: $bcolor;
+//     background: $back;
+//     border: 1px solid $line;
+//     @include trans;
+//
+//     &:hover, &:focus, &:active {
+//         color: $color;
+//         background: adjust-color($back, $saturation: -5%, $lightness: -10%);
+//         border-color: adjust-color($line, $saturation: -5%, $lightness: -10%);
+//         text-decoration: none;
+//         @include trans;
+//     }
+//
+//     &[class*='line'] {
+//         background: none;
+//         border-color: $line;
+//         color: $back;
+//         @include trans;
+//
+//         &:hover, &:focus, &:active {
+//             color: $bcolor;
+//             background: adjust-color($back, $saturation: 0%, $lightness: 0%);
+//             border-color: adjust-color($line, $saturation: 0%, $lightness: 0%);
+//             text-decoration: none;
+//             @include trans;
+//         }
+//     }
+// }
+//
+// a[class*='sm'], .btn[class*='sm'] {
+//     font-size: 15px;
+//     padding: 7px 15px;
+// }
+//
+// a[class*='md'], .btn[class*='md'] {
+//     font-size: 18px;
+//     padding: 9px 18px;
+// }
+//
+// a[class*='lg'], .btn[class*='lg'] {
+//     font-size: 20px;
+//     padding: 11px 20px;
+// }
+//
+// a[class*='wide'], .btn[class*='wide'] {
+//     width: 100%;
+// }
+//
+// a[class*='default'], .btn[class*='default'] {
+//     @include btn($blue, $blue, $white, $white);
+// }
+
+
+@include btn('emerald',$emerald);
+@include btn('red', $red);

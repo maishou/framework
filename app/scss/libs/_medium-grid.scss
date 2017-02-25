@@ -1,0 +1,120 @@
+// This container is a custom one, Bootstrap out of the box has 3 containers.
+$ContainerPhone: 100;
+
+// Intermediate small screen / phone. (Custom breakpoint).
+$screen-is: 480px;
+
+// Minimum screen size for the custom grid.
+$screen-is-min: ($screen-is);
+
+// Maximum screen size for the custom grid.
+$screen-is-max: 767px;
+
+// Maximum screen size for Extra small screen / phone (We have to call it before bootstrap).
+$screen-xs-max: ($screen-is-min - 1);
+
+// Minimum screen size for Medium screen / tablet.
+$screen-sm-min: ($screen-is-max + 1);
+
+// reinit origin mixin for create grid columns
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-is-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-xs-#{$i}, .col-is-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  }
+  #{$list} {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left: ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+  }
+}
+
+@include make-grid-columns;
+
+// Container width for the custom grid.
+//
+// Set the container width, and override it for fixed navbars in media queries.
+.container {
+  @media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+    width: $ContainerPhone;
+  }
+}
+
+// Function that creates the custom grid
+// Intermediate small grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include make-grid(is);
+}
+
+// Add visibility "visible-is" class for the custom grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include responsive-visibility('.visible-is');
+}
+
+// Add hidden "hidden-is" class for the custom grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include responsive-invisibility('.hidden-is');
+}
+
+// Define the "visible-is" class as hidden in all other grid widths (Except in the custom grid).
+@media (min-width: $screen-sm-min) {
+  @include responsive-invisibility('.visible-is');
+}
+
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.visible-is');
+}
+
+// Generate the is columns
+
+@mixin make-is-column($columns, $gutter: $grid-gutter-width) {
+
+position: relative;
+
+min-height: 1px;
+
+padding-left: ($gutter / 2);
+
+padding-right: ($gutter / 2);
+
+@media (min-width: 480px) {
+
+float: left;
+
+width: percentage(($columns / $grid-columns));
+
+}
+
+}
+
+@mixin make-is-column-offset($columns) {
+
+@media (min-width: $screen-is-min) {
+
+margin-left: percentage(($columns / $grid-columns));
+
+}
+
+}
+
+@mixin make-is-column-push($columns) {
+
+@media (min-width: $screen-is-min) {
+
+left: percentage(($columns / $grid-columns));
+
+}
+
+}
+
+@mixin make-is-column-pull($columns) {
+
+@media (min-width: $screen-is-min) {
+
+right: percentage(($columns / $grid-columns));
+
+}
+
+}

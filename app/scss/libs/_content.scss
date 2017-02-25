@@ -1,0 +1,126 @@
+
+
+.portfolio-content {
+    overflow: hidden;
+
+    .page-nav {
+        padding: 1.25em 0;
+        line-height: 2em;
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            color: $emerald;
+        }
+
+        .active {
+            a, span {
+                 color: $red;
+            }
+        }
+
+        span {
+            display: block;
+            padding: 0 0.5em 0 0;
+            float: left;
+            color: rgba($emerald, 0.3);
+        }
+    }
+    .head {
+        padding: 10vh 0 0 0;
+
+        .lead {
+            padding: 1em 0;
+        }
+    }
+
+    h2 {
+        color: $emerald;
+    }
+}
+
+div[class~="bg-fill"].bg-fill {
+    &.blue {
+        @include bg-fill(5deg, #0262a8, $white, 120%)
+    }
+    &.red {
+        @include bg-fill(-2deg, #D0011B, $white, 120%)
+    }
+    &.salmon {
+        @include bg-fill(5deg, #eb7357, $white, 120%)
+    }
+    &.gunmetal {
+        @include bg-fill(-2deg, #28282e, $white, 90%)
+    }
+}
+
+.img {
+    width: 100%;
+}
+
+.padme {
+    padding: 15px;
+}
+
+.offset {
+    margin-top: -15vh;
+}
+
+.shadow-xs {
+    @include img-shadow(3px, $black, $white, 0.1) {}
+}
+
+.shadow-md {
+    @include img-shadow(10px, $black, $white, 0.3) {}
+}
+
+.shadow-lg {
+    @include img-shadow(20px, $black, $white, 0.4) {}
+}
+
+.push-block {
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    height: 90px;
+    display: block;
+
+    @include break-xl {
+        height: 180px;
+    }
+
+    @include break-lg {
+        height: 90px;
+    }
+}
+
+.push-block-half {
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    height: 45px;
+    display: block;
+
+    @include break-xl {
+        height: 90px;
+    }
+
+    @include break-lg {
+        height: 45px;
+    }
+}
+
+.laptop {
+    width: 100%;
+    height: 550px;
+    background-size: 2200px;
+    background-repeat: repeat-x;
+    background-position: center top;
+}
+
+i.fa {
+    color: $light-emerald;
+    font-size: 40px;
+}

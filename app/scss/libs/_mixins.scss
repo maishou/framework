@@ -1,0 +1,27 @@
+@mixin break-lg {
+  @media only screen and (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin break-md {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin break-sm {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin break-xs {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin trans {
+  transition: all 0.3s ease-in-out;
+}

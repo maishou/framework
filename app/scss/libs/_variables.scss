@@ -1,0 +1,96 @@
+// Colors
+$white: #ffffff;
+$red: #FF5959;
+$green: #5CD777;
+$emerald: #45555D;
+$blue: #00ccff;
+$light-emerald: lighten($emerald, 20%);
+$grey: #f2f2f2;
+$black: #000000;
+
+html, body {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// Fonts
+$base: 16px;
+$base-famly: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+$font-1: "Helvetica";
+$base-zh: "source-han-sans-traditional", sans-serif;
+$line-height: $base * 1.5;
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto:200,400,700');
+
+body, html {
+    color: $emerald;
+    font-family: $base-famly;
+    font-size: $base;
+    height: 100%;
+    line-height: $line-height;
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+h2 {
+    font-size: 1.625em;
+    margin-bottom: 0.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.65em;
+}
+
+h4 {
+    font-size: 1.375em;
+    margin-bottom: 0.625em;
+}
+
+h5 {
+    font-size: 1.250em;
+    margin-bottom: 0.55em;
+}
+
+h6 {
+    font-size: 1.125em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+// a {
+//     border-bottom: 1px dotted rgba($blue, 0);
+//     color: $blue;
+//     outline: none;
+//     text-decoration: none;
+//     transition: all 0.3s;
+//
+//     &:hover {
+//         border-bottom: 1px dotted rgba($blue, 0.7);
+//         color: $blue;
+//         transition: all 0.3s;
+//     }
+//
+//     &:hover,
+//     &:active,
+//     &:focus {
+//         outline: none;
+//         text-decoration: none;
+//     }
+// }
+
+div[class*="col"] {
+    border: 1px dashed rgba($emerald, 0.1);
+}
